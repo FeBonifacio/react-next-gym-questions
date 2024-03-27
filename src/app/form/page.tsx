@@ -1,34 +1,34 @@
-"use client"
+import { useForm } from "@/hooks/useForm";
 import styled from "styled-components"
 
 const PageForm = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin: 50px;
+
+        label {
+            font-weight: 600;
+            font-size: 24px;
+            font-family: sans-serif;
+            padding: 5px;
+            text-align: left !important;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--shapes-dark);
+        }
+    }
 `;
-
-const FormItem = styled.div`
-    display: flex;
-    margin: 50px;
-    flex-direction: column;
-
-    label {
-        font-weight: 600;
-        font-size: 24px;
-        font-family: sans-serif;
-        padding: 5px;
-        text-align: left !important;
-    }
-
-    input {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        margin-bottom: 10px;
-        color: var(--shapes-dark);
-    }
-`
 
 const Button = styled.button`
     padding: 10px 20px;
@@ -45,20 +45,21 @@ const Button = styled.button`
 `;
 
 export default function Form() {
+    const { values, handleChange, handleSubmit } = useForm();
+
     return (
         <PageForm>
-            <FormItem>
+            <form onSubmit={handleSubmit}>
                 <label>NOME</label>
-                <input type="text" placeholder="nome" />
+                <input type="text" name="nome" placeholder="Nome" value={values.nome} onChange={handleChange} />
                 <label>Email</label>
-                <input type="text" placeholder="Email" />
-                <label>telefone</label>
-                <input type="number" placeholder="Telefone" />
+                <input type="text" name="email" placeholder="Email" value={values.email} onChange={handleChange} />
+                <label>Telefone</label>
+                <input type="text" name="telefone" placeholder="Telefone" value={values.telefone} onChange={handleChange} />
                 <label>Idade</label>
-                <input type="number" placeholder="Idade" />
-                <Button>ENVIAR</Button>
-            </FormItem>
+                <input type="number" name="idade" placeholder="Idade" value={values.idade} onChange={handleChange} />
+                <Button type="submit">ENVIAR</Button>
+            </form>
         </PageForm>
-
     )
 }
