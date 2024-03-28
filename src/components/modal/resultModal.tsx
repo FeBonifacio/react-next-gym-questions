@@ -19,12 +19,17 @@ const ModalOverlay = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 999;
+
 `;
 
 const ModalContent = styled.div`
     background-color: white;
     border-radius: 5px;
-    padding: 20px;
+    padding: 30px;
+
+    @media (max-width: 768px) {
+        width: 60%;
+    }
 `;
 
 

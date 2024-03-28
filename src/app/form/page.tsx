@@ -1,3 +1,4 @@
+"use client"
 import { useRouter } from "next/navigation";
 import { useForm } from "@/hooks/useForm";
 import styled from "styled-components"
@@ -28,6 +29,12 @@ const PageForm = styled.div`
             margin-bottom: 10px;
             color: var(--shapes-dark);
             background: transparent;
+        }
+    }
+
+    @media (max-width: 768px) {
+        form {
+            margin: 20px;
         }
     }
 `;

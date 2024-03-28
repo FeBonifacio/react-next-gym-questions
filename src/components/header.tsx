@@ -20,6 +20,12 @@ const Logo = styled.h1`
         text-decoration: none;
         color: var(--logo-color);
     }
+
+    @media (max-width: 768px) {
+        a {
+            font-size: 1.5rem;
+        }
+    }
 `;
 
 const Span = styled.p`
@@ -29,13 +35,12 @@ const Span = styled.p`
     font-weight: 500;
     font-size: 24px;
     color: var(--logo-color);
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 
-const Divider = styled.div`
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to top, var(--secondary-text), transparent, var(--secondary-text));
-`;
 
 export default function Header() {
     return (

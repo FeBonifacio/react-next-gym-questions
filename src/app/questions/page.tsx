@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import quiz from "../../assets/data/quiz.json";
 import { useQuestions } from "../../hooks/useQuestions";
 import styled from "styled-components";
@@ -16,6 +16,14 @@ const Container = styled.div`
         font-size: 2.5rem;
         color: var(--shapes);
         font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        padding: 10px;
+        h2 {
+            font-size: 2rem;
+            padding: 5px;
+        }
     }
 `;
 
@@ -43,6 +51,13 @@ const ButtonQuiz = styled.div`
 const Question: React.FC = () => {
     const { handleNextQuestion, currentQuestionIndex } = useQuestions();
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        const isMobile = window.innerWidth <= 768; // Defina a largura máxima para considerar como um dispositivo móvel
+        if (isMobile) {
+            alert("Você está visualizando esta página em um dispositivo móvel. Algumas funcionalidades podem variar.");
+        }
+    }, []);
 
     const handleModalClose = () => {
         setShowModal(false);
