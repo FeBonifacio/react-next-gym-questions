@@ -14,7 +14,12 @@ const Logo = styled.h1`
     font-size: 35px;
     display: flex;
     align-items: center;
-    color: var(--logo-color);
+    
+    
+    a {
+        text-decoration: none;
+        color: var(--logo-color);
+    }
 `;
 
 const Span = styled.p`
@@ -34,14 +39,9 @@ const Divider = styled.div`
 
 export default function Header() {
     return (
-        <>
         <Container>
-            <Logo>ACADEMIA</Logo>
+            <Logo><a href="/">ACADEMIA</a></Logo>
             <Span>MUDE A SUA VIDA HOJE</Span>
         </Container>
-        <Divider />
-        </>
-        
-        
     );
 }
