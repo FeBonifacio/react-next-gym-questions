@@ -53,11 +53,14 @@ const Question: React.FC = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        const isMobile = window.innerWidth <= 768; // Defina a largura máxima para considerar como um dispositivo móvel
-        if (isMobile) {
-            alert("Você está visualizando esta página em um dispositivo móvel. Algumas funcionalidades podem variar.");
+        // Verifica se o código está sendo executado no lado do cliente antes de acessar o localStorage
+        if (typeof window !== 'undefined') {
+            const nome = localStorage.getItem('nome');
+            if (nome) {
+                handleShowModal();
+            }
         }
-    }, []);
+    }, []); // Executa apenas uma vez no início
 
     const handleModalClose = () => {
         setShowModal(false);
