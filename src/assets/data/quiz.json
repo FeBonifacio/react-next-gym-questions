@@ -1,64 +1,65 @@
-{
-    "title":"RESPONDA O QUIZ",
-    "questions":[
     {
-        "id":1,
-        "question": "Qual o seu objetivo ?",
-        "options":[
-            {"id": 1, "name":"Ganho de massa magra", "alias":"A"},
-            {"id": 2, "name":"Manter Físico", "alias":"C"},
-            {"id": 3, "name":"Perder Peso", "alias":"B"}
-        ]
-    },
-    {
-    "id":2,
-    "question": "Qual tipo de treino prefere ?",
-    "options":[
-        {"id": 1, "name":"Rápido", "alias":"B"},
-        {"id": 2, "name":"Pesado", "alias":"A"},
-        {"id": 3, "name":"Não saberia escolher", "alias":"C"}
-    ]
-    },
-    {
-    "id":3,
-    "question": "Qual atividade mais gosta ?",
-    "options":[
-        {"id": 1, "name":"Musculação", "alias":"A"},
-        {"id": 2, "name":"Natanção", "alias":"B"},
-        {"id": 3, "name":"Caminhada", "alias":"B"},
-        {"id": 4, "name":"Danças", "alias":"C"}
-    ]
-    },
-    {
-    "id":4,
-    "question": "Tem algum problema de saúde ?",
-    "options":[
-        {"id": 1, "name":"Sim", "alias":"A"},
-        {"id": 2, "name":"Não", "alias":"C"}
-    ]
-    },
-    {
-    "id":5,
-    "question": "Qual a disponibilidade para os treinos ?",
-    "options":[
-        {"id": 1, "name":"Manhã", "alias":"C"},
-        {"id": 2, "name":"Tarde", "alias":"B"},
-        {"id": 3, "name":"Noite", "alias":"A"}
-    ]
-    },
-    {
-        "id":6,
-        "question": "Quantas vezes na semana gostaria de treinar ?",
-        "options":[
-            {"id": 1, "name":"5 à 6 Vezes", "alias":"A"},
-            {"id": 2, "name":"4 à 5 Vezes", "alias":"C"},
-            {"id": 3, "name":"2 à 3 Vezes", "alias":"B"}
-        ]
+        "title": "RESPONDA O QUIZ",
+        "questions": [
+        {
+            "id": 1,
+            "question": "Qual o seu objetivo?",
+            "options": [
+            { "id": 1, "name": "Ganhar", "alias": "A" },
+            { "id": 2, "name": "Manter", "alias": "C" },
+            { "id": 3, "name": "Perder", "alias": "B" }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "Qual tipo de treino prefere?",
+            "options": [
+            { "id": 1, "name": "Rápido", "alias": "B" },
+            { "id": 2, "name": "Pesado", "alias": "A" },
+            { "id": 3, "name": "Não ", "alias": "C" }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "Qual atividade mais gosta?",
+            "options": [
+            { "id": 1, "name": "Musculação", "alias": "A" },
+            { "id": 2, "name": "Natação", "alias": "B" },
+            { "id": 3, "name": "Caminhada", "alias": "B" }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "Tem algum problema de saúde?",
+            "options": [
+            { "id": 1, "name": "Sim", "alias": "A" },
+            { "id": 2, "name": "Não", "alias": "C" },
+            { "id": 3, "name": "Não sei", "alias": "C" }
+            ]
+        },
+        {
+            "id": 5,
+            "question": "Qual a disponibilidade para os treinos?",
+            "options": [
+            { "id": 1, "name": "Manhã", "alias": "C" },
+            { "id": 2, "name": "Tarde", "alias": "B" },
+            { "id": 3, "name": "Noite", "alias": "A" }
+            ]
+        },
+        {
+            "id": 6,
+            "question": "Quantas vezes na semana gostaria de treinar?",
+            "options": [
+            { "id": 1, "name": "5 à 6 Vezes", "alias": "A" },
+            { "id": 2, "name": "4 à 5 Vezes", "alias": "C" },
+            { "id": 3, "name": "2 à 3 Vezes", "alias": "B" }
+            ]
+        }
+        ],
+        "results": {
+            "A": "Você muito provavelmente quer ficar musculoso(a)!",
+            "B": "Você muito provavelmente quer perder peso!",
+            "C": "Você muito provavelmente quer manter o peso e focar em melhorar a qualidade de vida!"
+        }
     }
-],
-"results":{
-    "A": "Você muito provavelmente quer ficar musculoso(a)!",
-    "B": "Você muito provavelmente quer perder peso!",
-    "C": "Você muito provavelmente quer manter o peso e foco em melhorar a qualidade de vida!"
-}
-}
+    

@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { useForm } from "@/hooks/useForm";
 import styled from "styled-components"
 
@@ -46,7 +47,12 @@ const Button = styled.button`
 `;
 
 export default function Form() {
+    const router = useRouter();
     const { values, handleChange, handleSubmit } = useForm();
+
+    const handleNavigate = () => {
+        router.push("/questions")
+    }
 
     return (
         <PageForm>
@@ -59,7 +65,7 @@ export default function Form() {
                 <input type="text" name="telefone"  value={values.telefone} onChange={handleChange} />
                 <label>Idade</label>
                 <input type="number" name="idade"  value={values.idade} onChange={handleChange} />
-                <Button type="submit">ENVIAR</Button>
+                <Button type="submit" onClick={handleNavigate}>ENVIAR</Button>
             </form>
         </PageForm>
     )
