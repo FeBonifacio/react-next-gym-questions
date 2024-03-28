@@ -1,42 +1,21 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import quiz from "../../assets/data/quiz.json";
 import { useQuestions } from "../../hooks/useQuestions";
 import styled from "styled-components";
+import Modal from "../../components/modal/resultModal";
 
 const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-`;
-const Content = styled.div`
-    font-size: 40px;
-    font-weight: 800;
-    font-family: sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var();
-    padding: 20px 0 20px;
-`;
-
-const QuizItems = styled.div`
-    width: 400px; 
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: gray;
-    border-radius: 5px;
-    padding: 40px;
-    height: 100%;
+    padding: 20px;
 
     h2 {
-        font-size: 28px;
+        font-size: 2.5rem;
+        color: var(--shapes);
         font-weight: 600;
-        font-family: sans-serif;
     }
 `;
 
@@ -46,7 +25,7 @@ const ButtonQuiz = styled.div`
     button {
         width: 150px; 
         min-width: 150px;
-        padding: 10px 20px;
+        padding: 25px 30px;
         background-color: #007bff;
         color: white;
         border: none;
@@ -56,53 +35,57 @@ const ButtonQuiz = styled.div`
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 
         &:hover {
-            background-color: #0056b3; /* Cor de fundo mais escura no hover */
+            background-color: #0056b3;
         }
     }
 `;
 
+const Question: React.FC = () => {
+    const { handleNextQuestion, currentQuestionIndex } = useQuestions();
+    const [showModal, setShowModal] = useState(false);
 
-const Results = styled.div` /* Definindo o estilo Results */
-    font-size: 24px;
-    font-weight: 600;
-    font-family: sans-serif;
-    margin-top: 20px;
-`;
+    const handleModalClose = () => {
+        setShowModal(false);
+    }
 
+    const handleShowModal = () => {
+        setShowModal(true);
+    };
 
-export default function Question() {
-    const {
-        handleNextQuestion, 
-        currentQuestionIndex, 
-        selectedOption
-    } = useQuestions();
-
-    const showResults = currentQuestionIndex === quiz.questions.length;
+    const handleNextQuestionAndShowModal = () => {
+        handleNextQuestion();
+        if (currentQuestionIndex === quiz.questions.length - 1) {
+            handleShowModal();
+        }
+    };
 
     return (
-        <Container>
-            <Content>{quiz.title}</Content>
-            {!showResults ? (
-                <QuizItems>
-                    <h2>{quiz.questions[currentQuestionIndex].question}</h2>
-                    {quiz.questions[currentQuestionIndex].options.map((option: any, index: number) => (
-                        <ButtonQuiz key={option.id}>
-                            <button 
-                                type="button"
-                                id={option.alias}
-                                value={option.id}
-                                onClick={() => handleNextQuestion()}
-                            >
-                                {option.name}
-                            </button>
-                        </ButtonQuiz>
-                    ))}
-                </QuizItems>
-            ) : (
-                <Results>
-                    {/* {userResult} */}
-                </Results>
-            )}
-        </Container>
+        <>
+            <Container>
+                <h2>{quiz.questions[currentQuestionIndex].question}</h2>
+                {quiz.questions[currentQuestionIndex].options.map((option, index) => (
+                    <ButtonQuiz key={option.id}>
+                        <button 
+                            type="button"
+                            onClick={handleNextQuestionAndShowModal}
+                        >
+                            {option.name}
+                        </button>
+                    </ButtonQuiz>
+                ))}
+            </Container>
+            <Modal 
+                isOpen={showModal} 
+                onClose={handleModalClose} 
+                title="Parabéns!"
+            >
+                <p>{`${localStorage.getItem('nome')}! 
+                    Você deu um grande passo para sua saúde.
+                    Entraremos em contato para agendar o treino!`}
+                    </p>
+            </Modal>
+        </>
     );
 }
+
+export default Question;

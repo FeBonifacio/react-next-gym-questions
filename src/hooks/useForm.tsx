@@ -33,8 +33,6 @@ export function useForm() {
             telefone: '',
             idade: '',
         });
-
-        alert('Cadastro realizado !')
     };
 
     return {
