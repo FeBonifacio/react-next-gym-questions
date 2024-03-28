@@ -1,6 +1,7 @@
 "use client"
 import React from "react";
 import quiz from "../../assets/data/quiz.json";
+import { useQuestions } from "../../hooks/useQuestions";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -60,28 +61,48 @@ const ButtonQuiz = styled.div`
     }
 `;
 
+
+const Results = styled.div` /* Definindo o estilo Results */
+    font-size: 24px;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin-top: 20px;
+`;
+
+
 export default function Question() {
+    const {
+        handleNextQuestion, 
+        currentQuestionIndex, 
+        selectedOption
+    } = useQuestions();
+
+    const showResults = currentQuestionIndex === quiz.questions.length;
+
     return (
         <Container>
             <Content>{quiz.title}</Content>
-            {quiz.questions.map((quiz: any) => (
-                <QuizItems key={quiz.id}>
-                    <h2>{quiz.question}</h2>
-                    {quiz.options.map((option: any) => (
+            {!showResults ? (
+                <QuizItems>
+                    <h2>{quiz.questions[currentQuestionIndex].question}</h2>
+                    {quiz.questions[currentQuestionIndex].options.map((option: any, index: number) => (
                         <ButtonQuiz key={option.id}>
                             <button 
                                 type="button"
                                 id={option.alias}
                                 value={option.id}
-                                onClick={() => console.log(option.id)}
+                                onClick={() => handleNextQuestion()}
                             >
                                 {option.name}
                             </button>
                         </ButtonQuiz>
                     ))}
                 </QuizItems>
-            ))}
+            ) : (
+                <Results>
+                    {/* {userResult} */}
+                </Results>
+            )}
         </Container>
-    )
-
+    );
 }

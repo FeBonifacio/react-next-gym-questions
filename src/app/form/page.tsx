@@ -26,6 +26,7 @@ const PageForm = styled.div`
             font-size: 16px;
             margin-bottom: 10px;
             color: var(--shapes-dark);
+            background: transparent;
         }
     }
 `;
@@ -51,13 +52,13 @@ export default function Form() {
         <PageForm>
             <form onSubmit={handleSubmit}>
                 <label>NOME</label>
-                <input type="text" name="nome" placeholder="Nome" value={values.nome} onChange={handleChange} />
+                <input type="text" name="nome" value={values.nome} onChange={handleChange} />
                 <label>Email</label>
-                <input type="text" name="email" placeholder="Email" value={values.email} onChange={handleChange} />
+                <input type="text" name="email"  value={values.email} onChange={handleChange} />
                 <label>Telefone</label>
-                <input type="text" name="telefone" placeholder="Telefone" value={values.telefone} onChange={handleChange} />
+                <input type="text" name="telefone"  value={values.telefone} onChange={handleChange} />
                 <label>Idade</label>
-                <input type="number" name="idade" placeholder="Idade" value={values.idade} onChange={handleChange} />
+                <input type="number" name="idade"  value={values.idade} onChange={handleChange} />
                 <Button type="submit">ENVIAR</Button>
             </form>
         </PageForm>
