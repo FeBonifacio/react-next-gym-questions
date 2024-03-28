@@ -5,6 +5,7 @@ import { Metadata } from "next";
 
 import "./globals.css";
 import Header from "@/components/header";
+import Form from "./form/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
