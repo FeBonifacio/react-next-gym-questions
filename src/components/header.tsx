@@ -1,32 +1,41 @@
 "use client"
+import React from "react";
 import styled from "styled-components";
+import useLoader from '@/hooks/useLoader'; // Importe o hook useLoader
+import Link from 'next/link';
 
-const Container = styled.div`
-    display: flex;
+interface ContainerProps {
+    loading: boolean;
+}
+
+const Container = styled.div<ContainerProps>`
+    display: ${({ loading }) => (loading ? "none" : "flex")};
     padding: 20px;
     justify-content: space-between;
     background: var(--shapes-dark);
     align-items: center;
 `;
 
-const Logo = styled.h1`
+const LogoText = styled.h1`
+    color: var(--logo-color);
+    cursor: pointer;
     font-family: sans-serif;
     font-size: 35px;
     display: flex;
     align-items: center;
-    
-    
-    a {
-        text-decoration: none;
-        color: var(--logo-color);
+    transition: all 0.3s;
+    text-decoration: underline;
+    text-decoration-color: #000;
+
+    &:hover {
+        color: white;
     }
 
     @media (max-width: 768px) {
-        a {
-            font-size: 1.5rem;
-        }
+        font-size: 1.5rem;
     }
 `;
+
 
 const Span = styled.p`
     display: flex;
@@ -41,11 +50,14 @@ const Span = styled.p`
     }
 `;
 
-
 export default function Header() {
+    const loading = useLoader(); // Utilize o hook useLoader para controlar o estado de carregamento
+
     return (
-        <Container>
-            <Logo><a href="/">ACADEMIA</a></Logo>
+        <Container loading={loading}>
+            <Link href="/" passHref>
+                <LogoText>ACADEMIA</LogoText>
+            </Link>
             <Span>MUDE A SUA VIDA HOJE</Span>
         </Container>
     );
