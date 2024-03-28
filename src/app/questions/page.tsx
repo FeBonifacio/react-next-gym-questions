@@ -17,23 +17,14 @@ const Container = styled.div`
         color: var(--shapes);
         font-weight: 600;
     }
-
-    @media (max-width: 768px) {
-        padding: 10px;
-        h2 {
-            font-size: 2rem;
-            padding: 5px;
-        }
-    }
 `;
 
 const ButtonQuiz = styled.div`
     padding: 10px;
 
     button {
-        width: 150px; 
-        min-width: 150px;
-        padding: 25px 30px;
+        width: 100%; 
+        padding: 15px 20px;
         background-color: #007bff;
         color: white;
         border: none;
@@ -97,7 +88,7 @@ const Question: React.FC = () => {
                 onClose={handleModalClose} 
                 title="Parabéns!"
             >
-                <p>{`${localStorage.getItem('nome')}! 
+                <p>{`${typeof window !== 'undefined' && localStorage.getItem('nome')}! 
                     Você deu um grande passo para sua saúde.
                     Entraremos em contato para agendar o treino!`}
                     </p>

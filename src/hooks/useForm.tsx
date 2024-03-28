@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export function useForm() {
-    //definir estados para os valores dos inputs
+    // Definir estados para os valores dos inputs
     const [values, setValues] = useState({
         nome: '',
         email: '',
@@ -9,7 +9,7 @@ export function useForm() {
         idade: ''
     });
 
-    // função para atualizar os valores
+    // Função para atualizar os valores
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValues({
             ...values,
@@ -17,16 +17,19 @@ export function useForm() {
         });
     };
 
-    // envio do form
+    // Envio do formulário
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        localStorage.setItem('nome', values.nome);
-        localStorage.setItem('email', values.email);
-        localStorage.setItem('telefone', values.telefone);
-        localStorage.setItem('idade', values.idade);
+        // Verificar se está no navegador antes de acessar o localStorage
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('nome', values.nome);
+            localStorage.setItem('email', values.email);
+            localStorage.setItem('telefone', values.telefone);
+            localStorage.setItem('idade', values.idade);
+        }
 
-        // limpar
+        // Limpar os valores do formulário
         setValues({
             nome: '',
             email: '',

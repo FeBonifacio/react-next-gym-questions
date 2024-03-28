@@ -1,4 +1,3 @@
-"use client"
 
 import Header from "@/components/header";
 import Form from "./form/page";
